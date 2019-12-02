@@ -1,4 +1,4 @@
-package com.leisurexi.stack;
+package com.leisurexi.datastructures.stack;
 
 import java.util.Arrays;
 import java.util.Stack;

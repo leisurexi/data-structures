@@ -1,4 +1,4 @@
-package com.leisurexi.stack;
+package com.leisurexi.datastructures.stack;
 
 import lombok.extern.slf4j.Slf4j;
 
