@@ -213,3 +213,49 @@ binary sort tree）。新插入的节点，同样要遵循二叉排序树的原�
 ![WechatIMG28.jpeg](http://ww1.sinaimg.cn/large/006Vpl27gy1g9l33lqakzj31hc0p9x0f.jpg)
 
 上图就是一个二叉树的后序遍历，每个节点左侧的序号代表该节点的输出顺序。
+
+## 广度优先遍历
+如果说深度优先遍历是在一个方向上"一头扎到底"，那么广度优先遍历则恰恰相反；先
+在各个方向上各走出1步，再在各个方向上走出第2步、第3步......一直到各个方向
+全部走完。下面通过**层序遍历**，看一看广度优先是怎么回事。
+**层序遍历**，顾名思义，就是二叉树按照从根节点到叶子节点的层次关系，一层一层
+横向遍历各个节点。
+
+![WechatIMG21.jpeg](http://ww1.sinaimg.cn/large/006Vpl27gy1g9o5crdi43j31hc0p97oo.jpg)
+
+上图就是一个二叉树的层序遍历，各个节点左侧的序号代表该节点的输出顺序。可是，
+二叉树同一层次的节点之间是没有直接关联的，如何实现这种层序遍历呢？这里同样
+需要借助一个数据结构来辅助工作，这个数据结构就是**队列**。
+
+详细遍历步骤如下。
+1. 根节点1进入队列
+
+![WechatIMG22.jpeg](http://ww1.sinaimg.cn/large/006Vpl27gy1g9o5h7qd6qj31hc0p9wzb.jpg)
+
+2. 节点1出队，输出节点1，并得到节点1的左孩子节点2、有孩子节点3。让节点2和节点
+3入队。
+
+![WechatIMG23.jpeg](http://ww1.sinaimg.cn/large/006Vpl27gy1g9o5hnuafnj31hc0p91e6.jpg)
+
+3. 节点2出队，输出节点2，并得到节点2的左孩子节点4、右孩子节点5。让节点4和节点
+5入队。
+
+![WechatIMG24.jpeg](http://ww1.sinaimg.cn/large/006Vpl27gy1g9o5i3pr69j31hc0p9auw.jpg)
+
+4. 节点3出队，输出节点3，并得到节点3的右孩子节点6。让节点6入队。
+
+![WechatIMG25.jpeg](http://ww1.sinaimg.cn/large/006Vpl27gy1g9o5ije5g7j31hc0p9tuh.jpg)
+
+5. 节点4出队，输出节点4，由于节点4没有孩子节点，所以没有新节点入队。
+
+![WechatIMG26.jpeg](http://ww1.sinaimg.cn/large/006Vpl27gy1g9o5j0crhyj31hc0p91d6.jpg)
+
+6. 节点5出队，输出节点5，由于节点5同样没有孩子节点，所以没有新节点入队。
+
+![WechatIMG27.jpeg](http://ww1.sinaimg.cn/large/006Vpl27gy1g9o5jgz745j31hc0p9e0l.jpg)
+
+7. 节点6出队，输出节点6，节点6没有孩子节点，没有新节点入队。
+
+![WechatIMG28.jpeg](http://ww1.sinaimg.cn/large/006Vpl27gy1g9o5jux51aj31hc0p9e0q.jpg)
+
+到此为止，所有的节点都遍历输出完毕。
