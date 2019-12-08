@@ -58,9 +58,6 @@ public class CircularQueue {
      * 输出队列
      */
     public void output() {
-//        for (int i = front; i != rear; i = getIndex(i)) {
-//            log.info(String.valueOf(i));
-//        }
         log.info(Arrays.toString(array));
         log.info("队头下标: {}", front);
         log.info("队尾下标: {}", rear);
