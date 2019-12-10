@@ -73,7 +73,6 @@ public class CountSort {
             sortedArray[countArray[array[i] - min] - 1] = array[i];
             countArray[array[i] - min]--;
         }
-//        log.info(Arrays.toString(countArray));
         return sortedArray;
     }
 
