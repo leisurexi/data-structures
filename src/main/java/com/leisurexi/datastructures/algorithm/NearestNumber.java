@@ -7,12 +7,25 @@ import java.util.Arrays;
 /**
  * @author: leisurexi
  * @date: 2019-12-15 12:46 下午
- * @description: 在一个整数所包含数字的全部组合中，找到一个大于且仅大于原数的新整数
+ * @description: 在一个整数所包含数字的全部组合中，找到一个大于且仅大于原数的新整数。字典序算法。
  * @since JDK 1.8
  */
 @Slf4j
 public class NearestNumber {
 
+    /**
+     * 如果是固定的几个数字，应该是在逆序排列的情况下最大，在顺序排列的情况下最小。为了
+     * 和原数接近，我们需要尽量保持高位不变，低位在最小的范围内变换顺序。至于变换顺序
+     * 的范围大小，则取决于当前整数的逆序区域。
+     *
+     * 获取全排列下一个数的3个步骤。
+     * 1.从后向前查询逆序区域，找到逆序区域的前一位，也就是数字置换的边界。
+     * 2.让逆序区域的前一位和逆序区域中大于它的最小的数组交换位置。
+     * 3.把原来的逆序区域转为顺序状态。
+     *
+     * @param numbers
+     * @return
+     */
     public static int[] findNearestNumber(int[] numbers) {
         //1.从后向前查看逆序区域，找到逆序区域的前一位，也就是数字置换的边界
         int index = findTransferPoint(numbers);
