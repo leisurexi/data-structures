@@ -251,8 +251,6 @@ public class BinaryTree {
 //        inOrderTraversalWithStack(treeNode);
 //        log.info("非递归后序遍历:");
 //        postOrderTraversalWithStack(treeNode);
-
-
         log.info("非递归层序遍历");
         levelOrderTraversalWithQueue(treeNode);
         log.info("层序遍历");
