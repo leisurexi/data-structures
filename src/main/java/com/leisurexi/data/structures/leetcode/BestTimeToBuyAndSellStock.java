@@ -39,7 +39,7 @@ public class BestTimeToBuyAndSellStock {
      */
 
     public static void main(String[] args) {
-        int[] stocks = {7,6,4,3,1};
+        int[] stocks = {7, 6, 4, 3, 1};
         log.info(String.valueOf(maxProfit(stocks)));
     }
 
