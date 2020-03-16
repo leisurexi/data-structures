@@ -10,3 +10,5 @@
 * leetcode题号 496.下一个更大的元素: NextGreaterElement
 * leetcode题号 121.买卖股票的最佳时机: BestTimeToBuyAndSellStock
 
+
+* leetcode面试题 01.06. 字符串压缩: CompressString
