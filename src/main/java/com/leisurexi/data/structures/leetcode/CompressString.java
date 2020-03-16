@@ -41,20 +41,20 @@ public class CompressString {
         if (str == null || str.length() == 0) {
             return str;
         }
-        char last = str.charAt(0);
+        char curr = str.charAt(0);
         int count = 1;
         StringBuilder result = new StringBuilder();
         char[] chars = str.toCharArray();
         for (int i = 1; i < chars.length; i++) {
-            if (last != chars[i]) {
-                result.append(last).append(count);
-                last = chars[i];
+            if (curr != chars[i]) {
+                result.append(curr).append(count);
+                curr = chars[i];
                 count = 1;
             } else {
                 count++;
             }
         }
-        result.append(last).append(count);
+        result.append(curr).append(count);
         return result.length() >= str.length() ? str : result.toString();
     }
 
