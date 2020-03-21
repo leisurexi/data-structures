@@ -64,10 +64,60 @@ public class MinKNumbers {
         return result;
     }
 
+    /**
+     * 快速排序版
+     */
+    public static int[] getLeastNumbers_2(int[] arr, int k) {
+        if (arr.length == 1 && k == 1) {
+            return arr;
+        }
+        quickSort(arr, 0, arr.length - 1);
+        log.info(Arrays.toString(arr));
+        int[] result = new int[k];
+        for (int i = 0; i < k; i++) {
+            result[i] = arr[i];
+        }
+        return result;
+    }
+
+    private static void quickSort(int[] array, int startIndex, int endIndex) {
+        if (startIndex <= endIndex) {
+            return;
+        }
+        int pivotIndex = partition(array, startIndex, endIndex);
+        quickSort(array, startIndex, pivotIndex - 1);
+        quickSort(array, pivotIndex + 1, endIndex);
+    }
+
+    /**
+     * 分治(单边循环法)
+     *
+     * @param array      带交换数组
+     * @param startIndex 起始下标
+     * @param endIndex   结束下标
+     * @return
+     */
+    private static int partition(int[] array, int startIndex, int endIndex) {
+        // 取第1个位置(也可以是随机位置)的元素作为基准元素
+        int pivot = array[startIndex];
+        int mark = startIndex;
+        for (int i = startIndex + 1; i <= endIndex; i++) {
+            if (array[i] < pivot) {
+                mark++;
+                int p = array[mark];
+                array[mark] = array[i];
+                array[i] = p;
+            }
+        }
+        array[startIndex] = array[mark];
+        array[mark] = pivot;
+        return mark;
+    }
+
     public static void main(String[] args) {
         int[] arr = {0, 0, 1, 2, 4, 2, 2, 3, 1, 4};
         int k = 8;
-        log.info(Arrays.toString(getLeastNumbers(arr, k)));
+        log.info(Arrays.toString(getLeastNumbers_2(arr, k)));
     }
 
 }
