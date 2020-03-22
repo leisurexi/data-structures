@@ -72,7 +72,7 @@ public class MinKNumbers {
             return arr;
         }
         quickSort(arr, 0, arr.length - 1);
-        log.info(Arrays.toString(arr));
+        log.info("排序好后的数组: {}", Arrays.toString(arr));
         int[] result = new int[k];
         for (int i = 0; i < k; i++) {
             result[i] = arr[i];
@@ -81,7 +81,7 @@ public class MinKNumbers {
     }
 
     private static void quickSort(int[] array, int startIndex, int endIndex) {
-        if (startIndex <= endIndex) {
+        if (startIndex >= endIndex) {
             return;
         }
         int pivotIndex = partition(array, startIndex, endIndex);
