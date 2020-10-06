@@ -2,7 +2,6 @@ package com.leisurexi.data.structures.array;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -12,7 +11,7 @@ import java.util.Arrays;
  * @date: 2020-10-06 0:05
  */
 @Slf4j
-public class Array<T> {
+public class Array<E> {
 
     private static final int DEFAULT_SIZE = 10;
 
@@ -27,18 +26,18 @@ public class Array<T> {
         this.data = new Object[initialCapacity];
     }
 
-    public T get(int index) {
-        return (T) data[index];
+    public E get(int index) {
+        return (E) data[index];
     }
 
-    public boolean add(T e) {
+    public boolean add(E e) {
         ensureCapacityInternal(size + 1);
         data[size++] = e;
         debugPrintData();
         return true;
     }
 
-    public boolean add(int index, T e) {
+    public boolean add(int index, E e) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Index must be more than -1 and less than size");
         }
@@ -50,7 +49,7 @@ public class Array<T> {
         return true;
     }
 
-    public boolean remove(T e) {
+    public boolean remove(E e) {
         for (int i = 0; i < data.length; i++) {
             if (e == data[i] || e.equals(data[i])) {
                 return remove(i);
