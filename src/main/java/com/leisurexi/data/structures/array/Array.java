@@ -2,6 +2,7 @@ package com.leisurexi.data.structures.array;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -24,6 +25,10 @@ public class Array<T> {
 
     private Array(int initialCapacity) {
         this.data = new Object[initialCapacity];
+    }
+
+    public T get(int index) {
+        return (T) data[index];
     }
 
     public boolean add(T e) {
@@ -89,6 +94,7 @@ public class Array<T> {
         }
         array.remove(2);
         array.remove(Integer.valueOf(2));
+        System.out.println(array.get(0));
     }
 
 }
