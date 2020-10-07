@@ -86,12 +86,17 @@ public class LRUBasedLinkedList<E> {
 
     private static class Node<E> {
         E e;
-        Node next;
+        Node<E> next;
 
-        public Node(E e, Node next) {
+        public Node(E e, Node<E> next) {
             this.e = e;
             this.next = next;
         }
+
+        public Node<E> getNext() {
+            return this.next;
+        }
+
     }
 
     @Override
