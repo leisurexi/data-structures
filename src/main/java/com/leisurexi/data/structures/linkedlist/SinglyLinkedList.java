@@ -1,7 +1,5 @@
 package com.leisurexi.data.structures.linkedlist;
 
-import java.util.LinkedList;
-
 /**
  * 链表实现判断一个字符串是否是回文字符串
  *
