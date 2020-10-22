@@ -1,86 +1,74 @@
 package com.leisurexi.data.structures.queue;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.Arrays;
 
 /**
+ * 用数组实现循环队列
+ *
  * @author: leisurexi
- * @date: 2019-12-03 9:54 下午
- * @description: 循环队列示例
- * @since JDK 1.8
+ * @date: 2020-10-22 16:25
  */
-@Slf4j
-public class CircularQueue {
+public class CircularQueue<E> {
 
-    private int[] array;
+    private Object[] data;
     /**
-     * 队头下标
+     * 容量
      */
-    private int front;
+    private int n;
     /**
-     * 队尾下标
+     * 头指针
      */
-    private int rear;
+    private int head;
+    /**
+     * 尾指针
+     */
+    private int tail;
 
     public CircularQueue(int capacity) {
-        this.array = new int[capacity];
+        this.data = new Object[capacity];
+        this.n = capacity;
     }
 
-    /**
-     * 入队
-     *
-     * @param element 入队的元素
-     */
-    public void enQueue(int element) {
-        if (getIndex(rear) == front) {
-            throw new IllegalStateException("queue is full");
+    public boolean enqueue(E e) {
+        if ((tail + 1) % n == head) {
+            return false;
         }
-        array[rear] = element;
-        rear = getIndex(rear);
+        data[tail] = e;
+        tail = (tail + 1) % n;
+        return true;
     }
 
-    /**
-     * 出队
-     *
-     * @return
-     */
-    public int deQueue() {
-        if (rear == front) {
-            throw new IllegalStateException("queue is empty");
+    public E dequeue() {
+        if (head == tail) {
+            // 队列为空
+            return null;
         }
-        int deQueueElement = array[front];
-        front = getIndex(front);
-        return deQueueElement;
+        Object obj = data[head];
+        head = (head + 1) % n;
+        return (E) obj;
     }
 
-    /**
-     * 输出队列
-     */
-    public void output() {
-        log.info(Arrays.toString(array));
-        log.info("队头下标: {}", front);
-        log.info("队尾下标: {}", rear);
-    }
-
-    private int getIndex(int index) {
-        return (index + 1) % array.length;
+    @Override
+    public String toString() {
+        return "head: " + head + ", tail: " + tail + ", data: " + Arrays.toString(data);
     }
 
     public static void main(String[] args) {
-        CircularQueue queue = new CircularQueue(6);
-        queue.enQueue(3);
-        queue.enQueue(5);
-        queue.enQueue(6);
-        queue.enQueue(8);
-        queue.enQueue(1);
-        queue.deQueue();
-        queue.deQueue();
-        queue.deQueue();
-        queue.enQueue(2);
-        queue.enQueue(4);
-        queue.enQueue(9);
-        queue.output();
+        CircularQueue<Integer> queue = new CircularQueue<>(3);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        System.out.println(queue);
+        // 入队失败
+        queue.enqueue(3);
+        System.out.println(queue);
+        queue.dequeue();
+        System.out.println(queue);
+        queue.enqueue(4);
+        System.out.println(queue);
+        queue.dequeue();
+        System.out.println(queue);
+        queue.enqueue(5);
+        System.out.println(queue);
     }
 
 }
