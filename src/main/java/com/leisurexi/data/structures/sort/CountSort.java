@@ -1,4 +1,4 @@
-package com.leisurexi.data.structures.sortalgorithm.count;
+package com.leisurexi.data.structures.sort;
 
 import lombok.extern.slf4j.Slf4j;
 
